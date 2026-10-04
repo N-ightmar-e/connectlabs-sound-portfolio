@@ -16,7 +16,7 @@
     if(!response.ok)throw new Error('Portfolio unavailable');
     const source=await response.text();
     // Only this embedded view has a transparent canvas; the main page stays unchanged.
-    const override='<style id="artmug-transparent-canvas">html,body{background:transparent!important}html{color-scheme:normal}</style>';
+    const override='<style id="artmug-transparent-canvas">html,body{background:transparent!important}html{color-scheme:light!important}</style>';
     if(!source.includes('</head>'))throw new Error('Invalid portfolio document');
     document.open();
     document.write(source.replace('</head>',override+'</head>'));
