@@ -32,6 +32,15 @@
     for(const note of portfolio.querySelectorAll('.portfolio-footnote')){
       if(!note.textContent.trim())note.remove();
     }
+    // Prevent the 12px scroll-entry animation in Artmug; keep button/form feedback.
+    portfolio.documentElement.setAttribute('data-artmug-static-scroll','');
+    for(const script of portfolio.querySelectorAll('script:not([src])')){
+      const entryGuard="if('IntersectionObserver' in window){";
+      if(script.textContent.includes(entryGuard)){
+        script.textContent=script.textContent.replace(entryGuard,
+          "if('IntersectionObserver' in window && !document.documentElement.hasAttribute('data-artmug-static-scroll')){");
+      }
+    }
     const embeddedSource='<!doctype html>'+portfolio.documentElement.outerHTML;
     // Only this embedded view has a transparent canvas; the main page stays unchanged.
     const override='<style id="artmug-transparent-canvas">html,body{background:transparent!important}html{color-scheme:light!important}</style>';
