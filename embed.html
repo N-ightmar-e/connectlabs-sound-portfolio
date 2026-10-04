@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>악몽 방송·음향 세팅 포트폴리오</title>
+<style>html,body{margin:0;background:transparent;color-scheme:normal}body{font-family:Arial,sans-serif}</style>
+</head>
+<body>
+<p id="loading" role="status">포트폴리오를 불러오는 중입니다.</p>
+<noscript><a href="./" target="_top">포트폴리오 보기</a></noscript>
+<script>
+(async()=>{
+  try{
+    const response=await fetch('./index.html');
+    if(!response.ok)throw new Error('Portfolio unavailable');
+    const source=await response.text();
+    // Only this embedded view has a transparent canvas; the main page stays unchanged.
+    const override='<style id="artmug-transparent-canvas">html,body{background:transparent!important}html{color-scheme:normal}</style>';
+    if(!source.includes('</head>'))throw new Error('Invalid portfolio document');
+    document.open();
+    document.write(source.replace('</head>',override+'</head>'));
+    document.close();
+  }catch{
+    document.getElementById('loading').textContent='포트폴리오를 불러오지 못했습니다. 페이지를 새로고침해 주세요.';
+  }
+})();
+</script>
+</body>
+</html>
