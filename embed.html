@@ -8,18 +8,36 @@
 </head>
 <body>
 <p id="loading" role="status">포트폴리오를 불러오는 중입니다.</p>
-<noscript><a href="./" target="_top">포트폴리오 보기</a></noscript>
+<noscript>포트폴리오를 보려면 JavaScript를 활성화해 주세요.</noscript>
 <script>
 (async()=>{
   try{
     const response=await fetch('./index.html');
     if(!response.ok)throw new Error('Portfolio unavailable');
     const source=await response.text();
+    // Artmug's embedded presentation must not link visitors to ConnectLabs.
+    const portfolio=new DOMParser().parseFromString(source,'text/html');
+    for(const anchor of portfolio.querySelectorAll('a[href]')){
+      const href=anchor.getAttribute('href')||'';
+      if(href.startsWith('#'))continue;
+      let target;
+      try{target=new URL(href,location.href);}catch{continue;}
+      const host=target.hostname.toLowerCase();
+      const isConnectLabs=host==='connectlabs.kr'||host.endsWith('.connectlabs.kr')||
+        host==='connenctlabs.kr'||host.endsWith('.connenctlabs.kr')||
+        host==='connectlabs-sound-portfolio.connectlabs-1.chatgpt.site'||
+        (host==='n-ightmar-e.github.io'&&target.pathname.startsWith('/connectlabs-sound-portfolio'));
+      if(isConnectLabs)anchor.remove();
+    }
+    for(const note of portfolio.querySelectorAll('.portfolio-footnote')){
+      if(!note.textContent.trim())note.remove();
+    }
+    const embeddedSource='<!doctype html>'+portfolio.documentElement.outerHTML;
     // Only this embedded view has a transparent canvas; the main page stays unchanged.
     const override='<style id="artmug-transparent-canvas">html,body{background:transparent!important}html{color-scheme:light!important}</style>';
     if(!source.includes('</head>'))throw new Error('Invalid portfolio document');
     document.open();
-    document.write(source.replace('</head>',override+'</head>'));
+    document.write(embeddedSource.replace('</head>',override+'</head>'));
     document.close();
   }catch{
     document.getElementById('loading').textContent='포트폴리오를 불러오지 못했습니다. 페이지를 새로고침해 주세요.';
