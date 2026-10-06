@@ -17,10 +17,15 @@
     const source=await response.text();
     const portfolio=new DOMParser().parseFromString(source,'text/html');
 
+    // Two-week opening event, Korea Standard Time.
+    const openingEnd=Date.parse('2026-10-20T00:00:00+09:00');
+    const openingNow=Date.now();
+    if(openingNow>=Date.parse('2026-10-06T00:00:00+09:00')&&openingNow<openingEnd){
+    setTimeout(()=>location.reload(),openingEnd-openingNow+100);
     // Opening event: reflect current prices without restoring outbound links.
     const eventBanner=portfolio.createElement('aside');
     eventBanner.className='opening-event';
-    eventBanner.innerHTML='<strong>오픈 할인 이벤트 · 전 항목 10,000원 할인</strong><p>단품·옵션은 항목별 1만원 할인, 패키지는 기존 할인에 1만원 추가 할인됩니다. 1만원 이하 항목과 설정 복원은 무료입니다. 견적 항목도 1만원 할인되며 장비·유료 프로그램 구매 비용은 제외됩니다.</p>';
+    eventBanner.innerHTML='<strong>오픈 할인 이벤트 · 전 항목 10,000원 할인</strong><p><b>2026.10.06~10.19 · 한국시간 기준 2주간</b><br>단품·옵션은 항목별 1만원 할인, 패키지는 기존 할인에 1만원 추가 할인됩니다. 1만원 이하 항목과 설정 복원은 무료입니다. 견적 항목도 1만원 할인되며 장비·유료 프로그램 구매 비용은 제외됩니다.</p>';
     portfolio.querySelector('#remote-services .sound-products')?.before(eventBanner);
     for(const el of portfolio.querySelectorAll('.price-row b,.package-choices b,[name="broadcastConfig"]')){
       const target=el.tagName==='INPUT'?el.parentElement.querySelector('b'):el;
@@ -52,6 +57,7 @@
     const eventStyle=portfolio.createElement('style');
     eventStyle.textContent='.opening-event{border:1px solid #cbaa67;background:#252118;border-radius:12px;padding:20px;margin:20px 0}.opening-event strong{color:#d4b473;font-size:20px}.opening-event p{font-size:13px;line-height:1.7}.price-row del,.package-choices del{font-size:12px;color:#999;margin-right:8px}';
     portfolio.head.append(eventStyle);
+    }
 
     // Artmug: keep section navigation, but no outbound links.
     for(const anchor of portfolio.querySelectorAll('a[href]')){
