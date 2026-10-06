@@ -16,6 +16,43 @@
     if(!response.ok)throw new Error('Portfolio unavailable');
     const source=await response.text();
     const portfolio=new DOMParser().parseFromString(source,'text/html');
+
+    // Opening event: reflect current prices without restoring outbound links.
+    const eventBanner=portfolio.createElement('aside');
+    eventBanner.className='opening-event';
+    eventBanner.innerHTML='<strong>오픈 할인 이벤트 · 전 항목 10,000원 할인</strong><p>단품·옵션은 항목별 1만원 할인, 패키지는 기존 할인에 1만원 추가 할인됩니다. 1만원 이하 항목과 설정 복원은 무료입니다. 견적 항목도 1만원 할인되며 장비·유료 프로그램 구매 비용은 제외됩니다.</p>';
+    portfolio.querySelector('#remote-services .sound-products')?.before(eventBanner);
+    for(const el of portfolio.querySelectorAll('.price-row b,.package-choices b,[name="broadcastConfig"]')){
+      const target=el.tagName==='INPUT'?el.parentElement.querySelector('b'):el;
+      if(!target||target.querySelector('del'))continue;
+      const value=Number(target.textContent.replace(/[^0-9]/g,''));
+      if(value){target.innerHTML='<del>'+value.toLocaleString('ko-KR')+'원</del> '+Math.max(0,value-10000).toLocaleString('ko-KR')+'원';}
+    }
+    for(const card of portfolio.querySelectorAll('.bundle-card')){
+      const price=card.querySelector('strong'),label=card.querySelector('.discount-label');
+      if(price){const value=Number(price.textContent.replace(/[^0-9]/g,''));price.innerHTML=(value-10000).toLocaleString('ko-KR')+'<small>원</small>';}
+      if(label)label.textContent='총 20,000원 할인';
+    }
+    for(const el of portfolio.querySelectorAll('#bundles .portfolio-heading span'))el.textContent='패키지 할인 + 오픈 할인 · 총 20,000원 할인';
+    for(const el of portfolio.querySelectorAll('.option-grid strong,.question-options small')){
+      el.innerHTML=el.innerHTML.replace(/10,000원/g,'무료').replace(/20,000원/g,'10,000원').replace(/가격 문의/g,'상담 견적 · 10,000원 할인');
+    }
+    const repeat=portfolio.querySelector('#repeat-service');
+    if(repeat)repeat.innerHTML=repeat.innerHTML.replace(/5,000원/g,'이벤트 기간 무료').replace('복원비 이벤트 기간 무료은 별도 추가됩니다.','복원비는 이벤트 기간 무료입니다.');
+    for(const el of portfolio.querySelectorAll('#audio-fields>.product-support'))el.textContent='방송 + 음향은 정상가 합계에서 총 20,000원 할인됩니다. 단품 오픈 할인과 중복 계산하지 않습니다.';
+    for(const script of portfolio.querySelectorAll('script:not([src])')){
+      let code=script.textContent;
+      if(!code.includes('function estimate(input)'))continue;
+      code=code.replace(/price:10000/g,'price:0').replace(/price:20000/g,'price:10000');
+      code=code.replace('knownTotal:consultation.price,','knownTotal:consultation.price===null?null:Math.max(0,consultation.price-10000),').replace('items:[consultation]','items:[consultation,...(consultation.price===null?[]:[{name:"오픈 할인 이벤트",price:-10000}])]');
+      code=code.replace('const items=broadcastQuote?','const opening={name:"오픈 할인 이벤트",price:-10000}; const items=broadcastQuote?').replace(':[])]:audioItems;',':[]),opening]:[...audioItems,opening];');
+      code=code.replace('audioItems.reduce((total,item)=>total+(item.price??0),0)','audioItems.reduce((total,item)=>total+(item.price??0),0)-10000');
+      script.textContent=code;
+    }
+    const eventStyle=portfolio.createElement('style');
+    eventStyle.textContent='.opening-event{border:1px solid #cbaa67;background:#252118;border-radius:12px;padding:20px;margin:20px 0}.opening-event strong{color:#d4b473;font-size:20px}.opening-event p{font-size:13px;line-height:1.7}.price-row del,.package-choices del{font-size:12px;color:#999;margin-right:8px}';
+    portfolio.head.append(eventStyle);
+
     // Artmug: keep section navigation, but no outbound links.
     for(const anchor of portfolio.querySelectorAll('a[href]')){
       const href=anchor.getAttribute('href')||'';
