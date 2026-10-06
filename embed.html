@@ -15,6 +15,7 @@
     const response=await fetch('./index.html');
     if(!response.ok)throw new Error('Portfolio unavailable');
     const source=await response.text();
+    const portfolio=new DOMParser().parseFromString(source,'text/html');
     // Artmug: keep section navigation, but no outbound links.
     for(const anchor of portfolio.querySelectorAll('a[href]')){
       const href=anchor.getAttribute('href')||'';
