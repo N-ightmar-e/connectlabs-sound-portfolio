@@ -15,19 +15,35 @@
     const response=await fetch('./index.html');
     if(!response.ok)throw new Error('Portfolio unavailable');
     const source=await response.text();
-    // Artmug's embedded presentation must not link visitors to ConnectLabs.
-    const portfolio=new DOMParser().parseFromString(source,'text/html');
+    // Artmug: keep section navigation, but no outbound links.
     for(const anchor of portfolio.querySelectorAll('a[href]')){
       const href=anchor.getAttribute('href')||'';
       if(href.startsWith('#'))continue;
-      let target;
-      try{target=new URL(href,location.href);}catch{continue;}
-      const host=target.hostname.toLowerCase();
-      const isConnectLabs=host==='connectlabs.kr'||host.endsWith('.connectlabs.kr')||
-        host==='connenctlabs.kr'||host.endsWith('.connenctlabs.kr')||
-        host==='connectlabs-sound-portfolio.connectlabs-1.chatgpt.site'||
-        (host==='n-ightmar-e.github.io'&&target.pathname.startsWith('/connectlabs-sound-portfolio'));
-      if(isConnectLabs)anchor.remove();
+      if(anchor.classList.contains('project-video')){
+        let target;try{target=new URL(href);}catch{}
+        const id=target?.hostname==='www.youtube.com'?target.searchParams.get('v'):null;
+        if(id&&/^[A-Za-z0-9_-]{11}$/.test(id)){
+          const player=portfolio.createElement('iframe');
+          player.src='https://www.youtube.com/embed/'+id;
+          player.title=anchor.getAttribute('aria-label')?.replace(/ 보기.*$/,'')||'작업 포트폴리오 영상';
+          player.className='project-video';
+          player.style.cssText='display:block;width:100%;aspect-ratio:16/9;border:0;';
+          player.loading='lazy';player.allow='fullscreen; encrypted-media; picture-in-picture';
+          player.setAttribute('allowfullscreen','');
+          anchor.replaceWith(player);continue;
+        }
+      }
+      if(anchor.classList.contains('project-link')){anchor.remove();continue;}
+      const staticItem=portfolio.createElement(anchor.classList.contains('clip-card')?'article':'span');
+      staticItem.className=anchor.className;
+      staticItem.innerHTML=anchor.innerHTML;
+      anchor.replaceWith(staticItem);
+    }
+    for(const element of portfolio.querySelectorAll('.play-icon,.clip-play,.play-button'))element.remove();
+    for(const element of portfolio.querySelectorAll('.clip-card')) {
+      for(const child of element.querySelectorAll('*')){
+        if(child.children.length===0&&/클립 보기/.test(child.textContent))child.textContent='작업 사례';
+      }
     }
     for(const note of portfolio.querySelectorAll('.portfolio-footnote')){
       if(!note.textContent.trim())note.remove();
