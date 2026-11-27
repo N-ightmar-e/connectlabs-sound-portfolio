@@ -12,7 +12,7 @@ const ORDERS = {
   c: ['listen', 'reviews', 'creators', 'pricing'],
 };
 const AFTER_FOLD = ['schedule', 'inquiry', 'process', 'faq'];
-const LABELS = { hero: '소개', creators: '함께한 크리에이터', listen: '들어보기', reviews: '후기', pricing: '가격', schedule: '일정', inquiry: '문의 글 만들기', process: '진행 순서', faq: '자주 묻는 것' };
+const LABELS = { hero: '소개', creators: '크리에이터', listen: '포트폴리오', reviews: '후기', pricing: '가격', schedule: '일정', inquiry: '문의하기', process: '진행 순서', faq: '자주 묻는 질문' };
 
 const host = document.getElementById(HOST_ID);
 if (host && !host.shadowRoot) mount(host);
@@ -63,12 +63,11 @@ function mount(host) {
   S.hero = () => `
     <section class="st-hero" id="st-hero" data-section="hero" aria-labelledby="st-title">
       <div class="tf-hero" style="padding:0;gap:var(--space-6)">
-        <p class="tf-hero__eyebrow">${esc(C.hero.eyebrow)}</p>
         <h1 class="tf-hero__title" id="st-title">${esc(C.hero.title)}</h1>
         <p class="tf-hero__lead">${esc(C.hero.lead)}</p>
         <div class="tf-hero__actions">
           <button class="tf-btn tf-btn--outline" type="button" data-go="pricing">가격 보기</button>
-          <button class="tf-btn tf-btn--ghost" type="button" data-go="listen">작업한 소리 듣기</button>
+          <button class="tf-btn tf-btn--ghost" type="button" data-go="listen">포트폴리오</button>
         </div>
       </div>
       <img class="st-hero__portrait" src="${img(D.extracted.portrait)}" alt="악몽의 캐릭터 프로필" width="160" height="160">
@@ -77,9 +76,9 @@ function mount(host) {
       ${C.stats.map((s) => `<div class="tf-stat" role="listitem"><p class="tf-stat__label">${esc(s.label)}</p><p class="tf-stat__value">${esc(s.value.replace('{reviews}', reviewCount + '건'))}</p></div>`).join('')}
     </div>
     <section class="st-trust" aria-labelledby="st-trust-title">
-      <h2 class="tf-heading" id="st-trust-title">함께 일하는 브랜드와 대형 프로젝트</h2>
+      <h2 class="tf-heading" id="st-trust-title">제휴 브랜드 · 대형 서버 지원</h2>
       <ul class="tf-card st-logos" aria-label="파트너십 제휴 브랜드">${D.extracted.partners.map((p) => `<li class="st-logo"><img src="${img(p.image)}" alt="${esc(p.name)}" loading="lazy"><span>${esc(p.name)}</span></li>`).join('')}</ul>
-      <div class="st-servers"><p class="st-servers__label">대형 서버 방송 지원 <b>${D.extracted.servers.length}곳</b></p>
+      <div class="st-servers"><p class="st-servers__label">대형 서버 <b>${D.extracted.servers.length}곳</b></p>
         <ul>${D.extracted.servers.map((s) => `<li>${esc(s)}</li>`).join('')}</ul></div>
     </section>`;
 
@@ -88,7 +87,7 @@ function mount(host) {
     const cell = (v) => v ? esc(v) : '<span class="is-empty">—</span>';
     return `
     <section class="st-band" id="st-creators" data-section="creators" aria-labelledby="st-creators-title">
-      <div class="st-band__head"><h2 class="tf-heading" id="st-creators-title">함께한 크리에이터 ${D.extracted.creators.length}팀</h2></div>
+      <div class="st-band__head"><h2 class="tf-heading" id="st-creators-title">함께한 크리에이터 <span class="st-count">${D.extracted.creators.length}</span></h2></div>
       <ul class="st-faces">${top.map((c) => `<li><img src="${img(c.image)}" alt="" width="56" height="56" loading="lazy"><span>${esc(c.name)}</span></li>`).join('')}</ul>
       <details class="st-more"><summary>${D.extracted.creators.length}팀 전체 보기</summary>
         <div class="st-more__body"><div class="st-table-wrap" tabindex="0" role="region" aria-label="함께한 크리에이터 전체">
@@ -101,9 +100,9 @@ function mount(host) {
 
   S.listen = () => `
     <section class="st-band" id="st-listen" data-section="listen" aria-labelledby="st-listen-title">
-      <div class="st-band__head"><h2 class="tf-heading" id="st-listen-title">실제 방송에서 나간 소리</h2></div>
+      <div class="st-band__head"><h2 class="tf-heading" id="st-listen-title">포트폴리오</h2></div>
       <div class="st-media">${D.extracted.videos.map((v, i) => player({ kind: 'youtube', id: v.id, thumb: `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`, title: C.videos[i]?.title ?? v.label, meta: C.videos[i]?.meta ?? '' })).join('')}</div>
-      <h3 class="tf-subheading st-sub">노래 방송 클립</h3>
+      <h3 class="tf-subheading st-sub">노래 클립</h3>
       <ul class="st-clips">${D.extracted.clips.map((c) => `
         <li class="st-clip"><div class="st-player__frame" data-kind="chzzk" data-id="${esc(c.url.split('/').pop())}" data-title="${esc(c.title)}">
           <img src="${img(c.image)}" alt="" loading="lazy"><button class="st-player__play" type="button" aria-label="${esc(c.creator)} · ${esc(c.title)} 재생"><span>재생</span></button></div>
@@ -121,7 +120,7 @@ function mount(host) {
 
   S.reviews = () => `
     <section class="st-band" id="st-reviews" data-section="reviews" aria-labelledby="st-reviews-title">
-      <div class="st-band__head"><h2 class="tf-heading" id="st-reviews-title">후기 ${reviewCount}건</h2></div>
+      <div class="st-band__head"><h2 class="tf-heading" id="st-reviews-title">후기 <span class="st-count">${reviewCount}</span></h2></div>
       <div class="st-reviews">${reviews.map((r) => `<figure class="st-review"><blockquote>${esc(r.text)}</blockquote><figcaption>${esc(r.author)} · ${esc(r.date)}</figcaption></figure>`).join('')}</div>
       <div class="st-band__foot"><button class="tf-btn tf-btn--ghost tf-btn--sm" type="button" data-artmug="reviews">후기 전체 보기</button></div>
     </section>`;
@@ -153,7 +152,7 @@ function mount(host) {
 
   S.schedule = () => `
     <section class="st-band" id="st-schedule" data-section="schedule" aria-labelledby="st-schedule-title">
-      <div class="st-band__head"><h2 class="tf-heading" id="st-schedule-title">세팅 가능한 일정</h2>
+      <div class="st-band__head"><h2 class="tf-heading" id="st-schedule-title">일정</h2>
         <ul class="st-principles">${(C.principles || []).map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>
       <div class="st-week"><p class="st-week__label" id="st-week-label" aria-live="polite"></p>
         <div class="st-week__nav"><button class="tf-btn tf-btn--outline tf-btn--sm" type="button" id="st-prev">이전 주</button><button class="tf-btn tf-btn--outline tf-btn--sm" type="button" id="st-next">다음 주</button></div></div>
@@ -164,23 +163,23 @@ function mount(host) {
 
   S.inquiry = () => `
     <section class="st-band" id="st-inquiry" data-section="inquiry" aria-labelledby="st-inquiry-title">
-      <div class="st-band__head"><h2 class="tf-heading" id="st-inquiry-title">문의 글 만들기</h2></div>
+      <div class="st-band__head"><h2 class="tf-heading" id="st-inquiry-title">문의하기</h2></div>
       <div class="st-inquiry">
         <form class="st-form" id="st-form" novalidate>
-          <fieldset class="st-fieldset"><legend>어떤 도움이 필요하신가요?</legend>
+          <fieldset class="st-fieldset"><legend>작업</legend>
             <div class="st-choices">${[['audio', '음향 세팅', '토크 · 노래 목소리'], ['broadcast', '방송 세팅', '송출 · 장비 연결'], ['combined', '방송 + 음향', '두 가격을 더한 금액'], ['troubleshoot', '문제 해결', '끊김 · 잡음 · 오류']].map(([v, t, d], i) => choice('service', v, t, d, i === 0)).join('')}</div></fieldset>
-          <fieldset class="st-fieldset"><legend>장비는 갖추셨나요?</legend>
-            <label class="st-check"><input class="tf-checkbox" type="checkbox" name="gear" value="yes"><span>아직 장비가 없어요<small>무료로 장비를 추천해 드립니다</small></span></label>
+          <fieldset class="st-fieldset"><legend>장비</legend>
+            <label class="st-check"><input class="tf-checkbox" type="checkbox" name="gear" value="yes"><span>아직 장비가 없어요<small>장비 추천은 무료입니다</small></span></label>
             <div class="st-fields" id="st-gear" hidden>
               <div class="tf-field"><label class="tf-field__label" for="st-budget">장비 예산</label><input class="tf-input" id="st-budget" name="budget" autocomplete="off" placeholder="예: 마이크 + 인터페이스 30만 원"></div>
               <div class="tf-field"><label class="tf-field__label" for="st-purpose">주로 할 방송</label><div class="tf-select-wrap"><select class="tf-select" id="st-purpose" name="purpose"><option value="">고르지 않음</option><option>토크 · 게임</option><option>노래</option><option>ASMR</option><option>버츄얼</option><option>여러 가지</option></select></div></div>
               <div class="tf-field tf-field--wide"><label class="tf-field__label" for="st-room">방 상태</label><textarea class="tf-textarea" id="st-room" name="room" placeholder="예: 원룸, 창밖 차 소리가 들리고 말하면 조금 울려요. 흡음재 없음."></textarea></div>
             </div>
           </fieldset>
-          <fieldset class="st-fieldset" id="st-f-broadcast" hidden><legend>방송용 PC는 몇 대인가요?</legend>
-            <div class="st-choices">${[['single', '원컴 · PC 1대', '', '50,000원'], ['dual', '투컴 · PC 2대', '', '80,000원'], ['undecided', '잘 모르겠어요', '상담에서 정해요', '가격 문의']].map(([v, t, d, p]) => choice('broadcastConfig', v, t, d, v === 'undecided', p)).join('')}</div></fieldset>
-          <fieldset class="st-fieldset" id="st-f-audio"><legend>어떤 음향 세팅을 원하시나요?</legend>
-            <div class="st-choices">${[['talk', '토크 음향', '', '30,000원'], ['song', '토크 + 노래', '', '50,000원'], ['advanced', '맞춤 고급 음향', '장르별 3종 · 추가 조정 3회', '80,000원']].map(([v, t, d, p]) => choice('package', v, t, d, v === 'talk', p)).join('')}</div></fieldset>
+          <fieldset class="st-fieldset" id="st-f-broadcast" hidden><legend>PC 구성</legend>
+            <div class="st-choices">${[['single', '원컴 · PC 1대', '', '20,000원'], ['dual', '투컴 · PC 2대', '', '40,000원'], ['undecided', '잘 모르겠어요', '상담에서 정해요', '가격 문의']].map(([v, t, d, p]) => choice('broadcastConfig', v, t, d, v === 'undecided', p)).join('')}</div></fieldset>
+          <fieldset class="st-fieldset" id="st-f-audio"><legend>음향</legend>
+            <div class="st-choices">${[['talk', '토크 음향', '', '50,000원'], ['song', '토크 + 노래', '', '80,000원'], ['advanced', '맞춤 고급 음향', '장르별 3종 · 추가 조정 3회', '100,000원']].map(([v, t, d, p]) => choice('package', v, t, d, v === 'talk', p)).join('')}</div></fieldset>
           <details class="st-more st-more--form" id="st-f-options"><summary>추가 옵션</summary><fieldset class="st-fieldset st-more__body"><legend class="st-sr">추가 옵션</legend>
             <div class="st-checks">${C.options.map((o) => `<label class="st-check"><input class="tf-checkbox" type="checkbox" name="option" value="${o.key}"><span>${esc(o.name)}<small>${esc(o.label)}</small></span></label>`).join('')}</div>
             <div class="tf-field st-mic" id="st-mic-field" hidden><label class="tf-field__label" for="st-mic">추가 마이크 대수</label>
@@ -198,11 +197,11 @@ function mount(host) {
         </form>
         <aside class="tf-card st-summary" aria-labelledby="st-sum-label">
           <p class="st-summary__label" id="st-sum-label">예상 금액</p>
-          <p class="st-total" aria-live="polite"><span id="st-total">30,000</span><span class="st-total__unit" id="st-total-unit">원</span></p>
+          <p class="st-total" aria-live="polite"><span id="st-total">50,000</span><span class="st-total__unit" id="st-total-unit">원</span></p>
           <p class="st-total-note" id="st-total-note">상담 후 확정</p>
           <div class="st-summary__items" id="st-items"></div>
           <p class="st-summary__slot" id="st-slot-line">희망 일정 · 상담 후 결정</p>
-          <button class="tf-btn tf-btn--block" type="button" id="st-copy">글 복사하고 문의 창 열기</button>
+          <button class="tf-btn tf-btn--block" type="button" id="st-copy">복사하고 문의하기</button>
           <p class="st-copy-status" id="st-copy-status" role="status"></p>
           <details class="st-preview"><summary class="tf-link tf-link--quiet">복사될 글 보기</summary><textarea class="tf-textarea" id="st-output" readonly aria-label="복사될 문의 글"></textarea></details>
         </aside>
@@ -221,7 +220,7 @@ function mount(host) {
 
   S.faq = () => `
     <section class="st-band st-faq" id="st-faq" data-section="faq" aria-labelledby="st-faq-title">
-      <div class="st-band__head"><h2 class="tf-heading" id="st-faq-title">자주 묻는 것</h2></div>
+      <div class="st-band__head"><h2 class="tf-heading" id="st-faq-title">자주 묻는 질문</h2></div>
       ${C.faq.map((f) => `<details class="st-more"><summary>${esc(f.q)}</summary><div class="st-more__body"><ul class="st-bullets">${f.a.map((x) => `<li><span>${esc(x)}</span></li>`).join('')}</ul></div></details>`).join('')}
     </section>
     <footer class="st-foot"><span>ConnectLabs · 악몽 Nightmare</span><span>${esc(C.hero.remote)}</span></footer>`;
@@ -324,12 +323,12 @@ function mount(host) {
 
   // ---------- Inquiry ----------
   const form = $('#st-form');
-  const prices = { talk: 30000, song: 50000, advanced: 80000 };
+  const prices = { talk: 50000, song: 80000, advanced: 100000 };
   const packageNames = { talk: '토크 음향', song: '토크 + 노래', advanced: '맞춤 고급 음향' };
-  const configs = { single: ['원컴 방송 세팅', 50000], dual: ['투컴 방송 세팅', 80000], undecided: ['방송 세팅 · PC 구성 상담', null] };
+  const configs = { single: ['원컴 방송 세팅', 20000], dual: ['투컴 방송 세팅', 40000], undecided: ['방송 세팅 · PC 구성 상담', null] };
   const serviceNames = { audio: '음향 세팅', broadcast: '방송 세팅', combined: '방송 + 음향', troubleshoot: '문제 해결' };
   let preferred = '';
-  let lastTotal = 30000;
+  let lastTotal = 50000;
   let extraNote = '';
 
   function applyPick(p) {
@@ -346,7 +345,7 @@ function mount(host) {
     const service = f.get('service');
     const items = [];
     let invalid = false;
-    if (service === 'troubleshoot') items.push([extraNote || '방송 문제 해결', extraNote ? null : 25000]);
+    if (service === 'troubleshoot') items.push([extraNote || '방송 문제 해결', extraNote ? null : 20000]);
     if (service === 'broadcast' || service === 'combined') { const [n, p] = configs[f.get('broadcastConfig')]; items.push([n, p]); }
     if (service === 'audio' || service === 'combined') {
       items.push([packageNames[f.get('package')], prices[f.get('package')]]);
@@ -472,7 +471,7 @@ function mount(host) {
       if (selectedDay) renderSlots(); else await renderEmpty();
       $('#st-sched-status').textContent = `확인한 시각 ${new Date(weekData.checkedAt).toLocaleTimeString('ko-KR', { timeZone: 'Asia/Seoul', hour: '2-digit', minute: '2-digit' })}`;
     } catch {
-      $('#st-slots-area').innerHTML = `<div class="st-state st-state--error"><strong>일정을 불러오지 못했습니다.</strong><p>다시 시도하거나 원하는 날짜를 문의 글에 적어 주세요.</p><button class="tf-btn tf-btn--outline tf-btn--sm" type="button" id="st-retry">다시 불러오기</button></div>`;
+      $('#st-slots-area').innerHTML = `<div class="st-state st-state--error"><strong>일정을 불러오지 못했습니다.</strong><p>다시 시도하거나 원하는 날짜를 문의에 적어 주세요.</p><button class="tf-btn tf-btn--outline tf-btn--sm" type="button" id="st-retry">다시 불러오기</button></div>`;
       $('#st-retry').addEventListener('click', loadWeek);
       $('#st-sched-status').textContent = '';
     }
@@ -502,7 +501,7 @@ function mount(host) {
     }
     area.innerHTML = found
       ? `<div class="st-state"><p>가장 빠른 날은 ${label(found)}입니다.</p><button class="tf-btn tf-btn--outline tf-btn--sm" type="button" id="st-jump">${label(found)} 보기</button></div>`
-      : `<div class="st-state"><p>4주 안에 열린 시간이 없습니다. 원하는 날짜를 문의 글에 적어 주세요.</p><button class="tf-btn tf-btn--outline tf-btn--sm" type="button" data-go="inquiry">문의 글 만들기</button></div>`;
+      : `<div class="st-state"><p>4주 안에 열린 시간이 없습니다. 원하는 날짜를 문의에 적어 주세요.</p><button class="tf-btn tf-btn--outline tf-btn--sm" type="button" data-go="inquiry">문의하기</button></div>`;
     $('#st-jump')?.addEventListener('click', () => { weekStart = foundWeek; loadWeek(); });
   }
   $('#st-days').addEventListener('click', (e) => { const b = e.target.closest('.st-day'); if (!b || b.disabled) return; selectedDay = b.dataset.date; renderDays(); renderSlots(); });
@@ -551,7 +550,7 @@ function mount(host) {
         <div class="rail__nav"><span class="rail__marker" aria-hidden="true"></span>${keys.map((k) => `<button class="rail__item" type="button" data-key="${k}">${LABELS[k]}</button>`).join('')}</div>
         <div class="rail__meter"><div class="rail__meter-line"><span>읽은 곳</span><span class="rail__pct">0%</span></div><div class="tf-progress"><div class="tf-progress__bar"></div></div></div>
         <span class="rail__now"></span>
-        <button class="tf-btn" type="button" data-key="inquiry">문의 글 만들기</button>
+        <button class="tf-btn" type="button" data-key="inquiry">문의하기</button>
       </nav>`;
     const rail = r.querySelector('.rail');
     const items = [...r.querySelectorAll('.rail__item')];
