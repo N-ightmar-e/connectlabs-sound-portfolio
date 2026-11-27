@@ -141,12 +141,13 @@ function mount(host) {
           </div>`).join('')}
         </div>
         <details class="st-more"><summary>${esc(s.details.title)}</summary><div class="st-more__body">
-          <p class="st-small" style="margin:0 0 var(--space-4)">${esc(s.lead)} ${s.rows.map((r) => `${esc(r.name)}: ${esc(r.terms)}`).join(' · ')}</p>
+          <p class="st-small" style="margin:0 0 var(--space-2)">${esc(s.lead)}</p>
+          <ul class="st-bullets" style="margin-bottom:var(--space-4)">${s.rows.map((r) => `<li><span>${esc(r.name)} · ${esc(r.terms)}</span></li>`).join('')}</ul>
           ${s.details.options ? `<ul class="st-bullets st-bullets--two">${C.options.map((o) => `<li><span>${esc(o.name)} <span class="st-offer__terms">${esc(o.label)}</span></span></li>`).join('')}</ul>` : `<ul class="st-bullets st-bullets--two">${s.details.items.map((x) => `<li><span>${esc(x)}</span></li>`).join('')}</ul>`}
           ${s.details.note ? `<p class="st-small">${esc(s.details.note)}</p>` : ''}
         </div></details>
       </div>`).join('')}
-      <p class="st-small"><strong class="st-small__lead">${esc(C.costNote.title)}.</strong> ${esc(C.costNote.text)}</p>
+      <p class="st-small"><strong class="st-small__lead">${esc(C.costNote.title)}</strong> · ${esc(C.costNote.text)}</p>
     </section>`;
 
   S.schedule = () => `
@@ -166,7 +167,7 @@ function mount(host) {
       <div class="st-inquiry">
         <form class="st-form" id="st-form" novalidate>
           <fieldset class="st-fieldset"><legend>어떤 도움이 필요하신가요?</legend>
-            <div class="st-choices">${[['audio', '음향 세팅', '목소리'], ['broadcast', '방송 세팅', '송출 · 장비 연결'], ['combined', '방송 + 음향', '두 가격의 합'], ['troubleshoot', '문제 해결', '끊김 · 잡음 · 오류']].map(([v, t, d], i) => choice('service', v, t, d, i === 0)).join('')}</div></fieldset>
+            <div class="st-choices">${[['audio', '음향 세팅', '토크 · 노래 목소리'], ['broadcast', '방송 세팅', '송출 · 장비 연결'], ['combined', '방송 + 음향', '두 가격을 더한 금액'], ['troubleshoot', '문제 해결', '끊김 · 잡음 · 오류']].map(([v, t, d], i) => choice('service', v, t, d, i === 0)).join('')}</div></fieldset>
           <fieldset class="st-fieldset"><legend>장비는 갖추셨나요?</legend>
             <label class="st-check"><input class="tf-checkbox" type="checkbox" name="gear" value="yes"><span>아직 장비가 없어요<small>무료로 장비를 추천해 드립니다</small></span></label>
             <div class="st-fields" id="st-gear" hidden>
@@ -178,14 +179,14 @@ function mount(host) {
           <fieldset class="st-fieldset" id="st-f-broadcast" hidden><legend>방송용 PC는 몇 대인가요?</legend>
             <div class="st-choices">${[['single', '원컴 · PC 1대', '', '50,000원'], ['dual', '투컴 · PC 2대', '', '80,000원'], ['undecided', '잘 모르겠어요', '상담에서 정해요', '가격 문의']].map(([v, t, d, p]) => choice('broadcastConfig', v, t, d, v === 'undecided', p)).join('')}</div></fieldset>
           <fieldset class="st-fieldset" id="st-f-audio"><legend>어떤 음향 세팅을 원하시나요?</legend>
-            <div class="st-choices">${[['talk', '토크 음향', '', '30,000원'], ['song', '토크 + 노래', '', '50,000원'], ['advanced', '맞춤 고급 음향', '3종 · 추가 조정 3회', '80,000원']].map(([v, t, d, p]) => choice('package', v, t, d, v === 'talk', p)).join('')}</div></fieldset>
+            <div class="st-choices">${[['talk', '토크 음향', '', '30,000원'], ['song', '토크 + 노래', '', '50,000원'], ['advanced', '맞춤 고급 음향', '장르별 3종 · 추가 조정 3회', '80,000원']].map(([v, t, d, p]) => choice('package', v, t, d, v === 'talk', p)).join('')}</div></fieldset>
           <details class="st-more st-more--form" id="st-f-options"><summary>추가 옵션</summary><fieldset class="st-fieldset st-more__body"><legend class="st-sr">추가 옵션</legend>
             <div class="st-checks">${C.options.map((o) => `<label class="st-check"><input class="tf-checkbox" type="checkbox" name="option" value="${o.key}"><span>${esc(o.name)}<small>${esc(o.label)}</small></span></label>`).join('')}</div>
             <div class="tf-field st-mic" id="st-mic-field" hidden><label class="tf-field__label" for="st-mic">추가 마이크 대수</label>
               <input class="tf-input" id="st-mic" name="mic" type="number" min="1" step="1" value="1" inputmode="numeric" aria-describedby="st-mic-hint">
               <span class="tf-field__hint" id="st-mic-hint">1대당 20,000원</span></div>
           </fieldset></details>
-          <details class="st-more st-more--form"><summary>방송 환경 적기 (선택)</summary><fieldset class="st-fieldset st-more__body"><legend class="st-sr">방송 환경</legend>
+          <details class="st-more st-more--form"><summary>방송 환경 적기(선택)</summary><fieldset class="st-fieldset st-more__body"><legend class="st-sr">방송 환경</legend>
             <div class="st-fields">
               <div class="tf-field"><label class="tf-field__label" for="st-channel">활동명이나 채널</label><input class="tf-input" id="st-channel" name="channel" autocomplete="off" placeholder="예: 악몽, 치지직 채널 이름"></div>
               <div class="tf-field"><label class="tf-field__label" for="st-platform">방송 플랫폼</label><div class="tf-select-wrap"><select class="tf-select" id="st-platform" name="platform"><option value="">고르지 않음</option><option>치지직</option><option>YouTube</option><option>SOOP</option><option>여러 곳</option><option>아직 정하지 않음</option></select></div></div>
@@ -197,7 +198,7 @@ function mount(host) {
         <aside class="tf-card st-summary" aria-labelledby="st-sum-label">
           <p class="st-summary__label" id="st-sum-label">예상 금액</p>
           <p class="st-total" aria-live="polite"><span id="st-total">30,000</span><span class="st-total__unit" id="st-total-unit">원</span></p>
-          <p class="st-total-note" id="st-total-note">상담에서 확정</p>
+          <p class="st-total-note" id="st-total-note">상담 후 확정</p>
           <div class="st-summary__items" id="st-items"></div>
           <p class="st-summary__slot" id="st-slot-line">희망 일정 · 상담 후 결정</p>
           <button class="tf-btn tf-btn--block" type="button" id="st-copy">글 복사하고 문의 창 열기</button>
@@ -394,7 +395,7 @@ function mount(host) {
     roll($('#st-total'), lastTotal, r.total);
     lastTotal = r.total;
     $('#st-total-unit').textContent = r.open ? '원부터' : '원';
-    $('#st-total-note').textContent = r.open ? '상담 항목이 있어 최소 금액' : '상담에서 확정';
+    $('#st-total-note').textContent = r.open ? '상담이 필요한 항목이 있어 최소 금액입니다' : '상담 후 확정';
     $('#st-slot-line').textContent = '희망 일정 · ' + (preferred || '상담 후 결정');
 
     const f = r.f;
