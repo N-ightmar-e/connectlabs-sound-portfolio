@@ -48,8 +48,9 @@ function mount(host) {
     if (!table) return null;
     const rows = [...table.rows].slice(1).map((r) => [...r.cells].map((c) => c.innerText.trim())).filter((c) => c.length >= 4 && /^\d+$/.test(c[0]));
     if (!rows.length) return null;
-    const list = rows.map((c) => ({ n: Number(c[0]), text: c[2], author: c[c.length - 2], date: c[c.length - 1] })).filter((r) => r.text.length > 30);
-    return { count: Math.max(...rows.map((c) => Number(c[0]))), latest: rows[0][rows[0].length - 1], list: list.sort((x, y) => y.text.length - x.text.length).slice(0, 3) };
+    // Artmug columns: 번호, 평점, 내용, 작성자, 작성일, (empty).
+    const list = rows.map((c) => ({ n: Number(c[0]), text: c[2], author: c[3], date: c[4] })).filter((r) => r.text.length > 30);
+    return { count: Math.max(...rows.map((c) => Number(c[0]))), latest: rows[0][4], list: list.sort((x, y) => y.text.length - x.text.length).slice(0, 3) };
   }
   const live = artmugReviews();
   const reviews = live?.list.length >= 3 ? live.list : C.fallbackReviews;
