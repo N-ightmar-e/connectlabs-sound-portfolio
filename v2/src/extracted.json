@@ -1,0 +1,759 @@
+{
+  "creators": [
+    {
+      "name": "RAON",
+      "youtube": "약 452만명",
+      "chzzk": "7,805명",
+      "soop": null,
+      "image": "img/creator-1.jpg"
+    },
+    {
+      "name": "김블루",
+      "youtube": "약 230만명",
+      "chzzk": "155,530명",
+      "soop": null,
+      "image": "img/creator-2.jpg"
+    },
+    {
+      "name": "스토리",
+      "youtube": "약 193만명",
+      "chzzk": null,
+      "soop": null,
+      "image": "img/creator-3.jpg"
+    },
+    {
+      "name": "악어",
+      "youtube": "약 125만명",
+      "chzzk": null,
+      "soop": null,
+      "image": "img/creator-4.jpg"
+    },
+    {
+      "name": "괴물쥐",
+      "youtube": "약 121만명",
+      "chzzk": "359,020명",
+      "soop": null,
+      "image": "img/creator-5.jpg"
+    },
+    {
+      "name": "장지수",
+      "youtube": "약 112만명",
+      "chzzk": null,
+      "soop": null,
+      "image": "img/creator-6.jpg"
+    },
+    {
+      "name": "릴카",
+      "youtube": "약 99.3만명",
+      "chzzk": "151,599명",
+      "soop": null,
+      "image": "img/creator-7.jpg"
+    },
+    {
+      "name": "형독",
+      "youtube": "약 82.9만명",
+      "chzzk": "45,513명",
+      "soop": null,
+      "image": "img/creator-8.jpg"
+    },
+    {
+      "name": "강지",
+      "youtube": "약 76.5만명",
+      "chzzk": "298,808명",
+      "soop": null,
+      "image": "img/creator-9.jpg"
+    },
+    {
+      "name": "푸린",
+      "youtube": "약 72.6만명",
+      "chzzk": "92,900명",
+      "soop": null,
+      "image": "img/creator-10.jpg"
+    },
+    {
+      "name": "삼식",
+      "youtube": "약 71.7만명",
+      "chzzk": "191,122명",
+      "soop": null,
+      "image": "img/creator-11.jpg"
+    },
+    {
+      "name": "한동숙",
+      "youtube": "약 59.4만명",
+      "chzzk": "458,941명",
+      "soop": null,
+      "image": "img/creator-12.jpg"
+    },
+    {
+      "name": "핑맨",
+      "youtube": "약 58만명",
+      "chzzk": "143,832명",
+      "soop": null
+    },
+    {
+      "name": "남도형 성우",
+      "youtube": "약 56.3만명",
+      "chzzk": "13,040명",
+      "soop": null
+    },
+    {
+      "name": "문호준",
+      "youtube": "약 55만명",
+      "chzzk": "2,463명",
+      "soop": null
+    },
+    {
+      "name": "김된모",
+      "youtube": "약 51.7만명",
+      "chzzk": null,
+      "soop": null
+    },
+    {
+      "name": "쫀득",
+      "youtube": "약 51만명",
+      "chzzk": "39,243명",
+      "soop": null
+    },
+    {
+      "name": "와나나",
+      "youtube": "약 47.7만명",
+      "chzzk": "20,223명",
+      "soop": null
+    },
+    {
+      "name": "버니버니",
+      "youtube": "약 44.7만명",
+      "chzzk": "66,516명",
+      "soop": null
+    },
+    {
+      "name": "멋사",
+      "youtube": "약 44.5만명",
+      "chzzk": "116,065명",
+      "soop": null
+    },
+    {
+      "name": "울프",
+      "youtube": "약 44.4만명",
+      "chzzk": "381,537명",
+      "soop": null
+    },
+    {
+      "name": "명예훈장",
+      "youtube": "약 44.1만명",
+      "chzzk": "152,848명",
+      "soop": null
+    },
+    {
+      "name": "허니츄러스",
+      "youtube": "약 41.2만명",
+      "chzzk": "139,914명",
+      "soop": null
+    },
+    {
+      "name": "설백",
+      "youtube": "약 37.2만명",
+      "chzzk": "102,844명",
+      "soop": null
+    },
+    {
+      "name": "찬이",
+      "youtube": "약 36.4만명",
+      "chzzk": "2,609명",
+      "soop": null
+    },
+    {
+      "name": "아야츠노 유니",
+      "youtube": "약 36.2만명",
+      "chzzk": "308,908명",
+      "soop": null
+    },
+    {
+      "name": "아카네 리제",
+      "youtube": "약 35.9만명",
+      "chzzk": "263,452명",
+      "soop": null
+    },
+    {
+      "name": "유콘",
+      "youtube": "약 32.8만명",
+      "chzzk": "52,167명",
+      "soop": null
+    },
+    {
+      "name": "시라유키 히나",
+      "youtube": "약 32.1만명",
+      "chzzk": "241,865명",
+      "soop": null
+    },
+    {
+      "name": "김레인",
+      "youtube": "약 29.4만명",
+      "chzzk": null,
+      "soop": null
+    },
+    {
+      "name": "후추",
+      "youtube": "약 28.6만명",
+      "chzzk": "40,874명",
+      "soop": null
+    },
+    {
+      "name": "너불",
+      "youtube": "약 28.6만명",
+      "chzzk": "108,934명",
+      "soop": null
+    },
+    {
+      "name": "아오쿠모 린",
+      "youtube": "약 28.6만명",
+      "chzzk": "228,583명",
+      "soop": null
+    },
+    {
+      "name": "박삐삐",
+      "youtube": "약 28.1만명",
+      "chzzk": null,
+      "soop": null
+    },
+    {
+      "name": "김뚜띠",
+      "youtube": "약 27.5만명",
+      "chzzk": "150,746명",
+      "soop": null
+    },
+    {
+      "name": "피닉스박",
+      "youtube": "약 26.6만명",
+      "chzzk": "158,492명",
+      "soop": null
+    },
+    {
+      "name": "아라하시 타비",
+      "youtube": "약 26.4만명",
+      "chzzk": "264,941명",
+      "soop": null
+    },
+    {
+      "name": "스텔라이브",
+      "youtube": "약 26.1만명",
+      "chzzk": "7,288명",
+      "soop": null
+    },
+    {
+      "name": "이초홍",
+      "youtube": "약 25.9만명",
+      "chzzk": "100,046명",
+      "soop": null
+    },
+    {
+      "name": "텐코 시부키",
+      "youtube": "약 23.2만명",
+      "chzzk": "249,377명",
+      "soop": null
+    },
+    {
+      "name": "금휘",
+      "youtube": "약 24.5만명",
+      "chzzk": "72,110명",
+      "soop": null
+    },
+    {
+      "name": "텍스쳐",
+      "youtube": "약 24.1만명",
+      "chzzk": null,
+      "soop": null
+    },
+    {
+      "name": "아구이뽀",
+      "youtube": "약 23.4만명",
+      "chzzk": "93,673명",
+      "soop": null
+    },
+    {
+      "name": "유즈하 리코",
+      "youtube": "약 22.5만명",
+      "chzzk": "219,685명",
+      "soop": null
+    },
+    {
+      "name": "하나코 나나",
+      "youtube": "약 20.9만명",
+      "chzzk": "218,020명",
+      "soop": null
+    },
+    {
+      "name": "네네코 마시로",
+      "youtube": "약 18.5만명",
+      "chzzk": "217,067명",
+      "soop": null
+    },
+    {
+      "name": "안산저격수",
+      "youtube": "약 19.9만명",
+      "chzzk": null,
+      "soop": "약 7,600명"
+    },
+    {
+      "name": "실프",
+      "youtube": "약 19.7만명",
+      "chzzk": "120,061명",
+      "soop": null
+    },
+    {
+      "name": "마뫄",
+      "youtube": "약 19.3만명",
+      "chzzk": "148,882명",
+      "soop": null
+    },
+    {
+      "name": "금사향",
+      "youtube": "약 18.9만명",
+      "chzzk": "101,537명",
+      "soop": null
+    },
+    {
+      "name": "크포",
+      "youtube": "약 17.2만명",
+      "chzzk": "50,766명",
+      "soop": null
+    },
+    {
+      "name": "해기",
+      "youtube": "약 16.9만명",
+      "chzzk": null,
+      "soop": null
+    },
+    {
+      "name": "사키하네 후야",
+      "youtube": "약 13.6만명",
+      "chzzk": "166,936명",
+      "soop": null
+    },
+    {
+      "name": "구칠이",
+      "youtube": "약 16.5만명",
+      "chzzk": null,
+      "soop": null
+    },
+    {
+      "name": "코렛트",
+      "youtube": "약 16.5만명",
+      "chzzk": "77,789명",
+      "soop": null
+    },
+    {
+      "name": "채현찌",
+      "youtube": "약 16.3만명",
+      "chzzk": "101,510명",
+      "soop": null
+    },
+    {
+      "name": "헤징",
+      "youtube": "약 16.1만명",
+      "chzzk": "69,398명",
+      "soop": null
+    },
+    {
+      "name": "쌍베",
+      "youtube": "약 15.7만명",
+      "chzzk": "109,160명",
+      "soop": null
+    },
+    {
+      "name": "고차비",
+      "youtube": "약 15.7만명",
+      "chzzk": "98,788명",
+      "soop": null
+    },
+    {
+      "name": "앵보",
+      "youtube": "약 15.5만명",
+      "chzzk": "55,648명",
+      "soop": null
+    },
+    {
+      "name": "마레 플로스",
+      "youtube": "약 14.5만명",
+      "chzzk": "70,424명",
+      "soop": null
+    },
+    {
+      "name": "김뿡",
+      "youtube": "약 14.2만명",
+      "chzzk": "142,385명",
+      "soop": null
+    },
+    {
+      "name": "새옴",
+      "youtube": "약 14.2만명",
+      "chzzk": "53,883명",
+      "soop": null
+    },
+    {
+      "name": "카라미",
+      "youtube": "약 14만명",
+      "chzzk": "19,937명",
+      "soop": null
+    },
+    {
+      "name": "버즈",
+      "youtube": "약 1.59만명",
+      "chzzk": null,
+      "soop": "약 13만명"
+    },
+    {
+      "name": "정소림 캐스터",
+      "youtube": "약 12만명",
+      "chzzk": "33,263명",
+      "soop": null
+    },
+    {
+      "name": "남봉",
+      "youtube": "약 3.32만명",
+      "chzzk": "114,980명",
+      "soop": null
+    },
+    {
+      "name": "감블러",
+      "youtube": "약 10.8만명",
+      "chzzk": "58,120명",
+      "soop": null
+    },
+    {
+      "name": "더샤이",
+      "youtube": "약 10.8만명",
+      "chzzk": null,
+      "soop": null
+    },
+    {
+      "name": "아리사",
+      "youtube": "약 8.35만명",
+      "chzzk": "104,864명",
+      "soop": null
+    },
+    {
+      "name": "아야 AYA",
+      "youtube": "약 9.36만명",
+      "chzzk": "41,060명",
+      "soop": null
+    },
+    {
+      "name": "리타",
+      "youtube": "약 4,820명",
+      "chzzk": null,
+      "soop": "약 9.3만명"
+    },
+    {
+      "name": "둥그레",
+      "youtube": "약 4.69만명",
+      "chzzk": "91,568명",
+      "soop": null
+    },
+    {
+      "name": "준바",
+      "youtube": "약 7.78만명",
+      "chzzk": "4,594명",
+      "soop": null
+    },
+    {
+      "name": "캡틴잭",
+      "youtube": "약 7.67만명",
+      "chzzk": "70,883명",
+      "soop": null
+    },
+    {
+      "name": "에피나",
+      "youtube": "약 7.2만명",
+      "chzzk": "10,000명",
+      "soop": null
+    },
+    {
+      "name": "디디디용",
+      "youtube": "약 3.63만명",
+      "chzzk": "66,094명",
+      "soop": null
+    },
+    {
+      "name": "오화요",
+      "youtube": "약 6.44만명",
+      "chzzk": "46,493명",
+      "soop": null
+    },
+    {
+      "name": "갓데드",
+      "youtube": "약 6.39만명",
+      "chzzk": null,
+      "soop": null
+    },
+    {
+      "name": "자몽뀨",
+      "youtube": "약 6.02만명",
+      "chzzk": "25,405명",
+      "soop": null
+    },
+    {
+      "name": "카린",
+      "youtube": "약 2.74만명",
+      "chzzk": "58,089명",
+      "soop": null
+    },
+    {
+      "name": "아야",
+      "youtube": "약 4.1만명",
+      "chzzk": "52,595명",
+      "soop": null
+    },
+    {
+      "name": "에리스",
+      "youtube": "약 3.35만명",
+      "chzzk": "51,224명",
+      "soop": null
+    },
+    {
+      "name": "카르페",
+      "youtube": "약 4.95만명",
+      "chzzk": null,
+      "soop": null
+    },
+    {
+      "name": "위버멘쉬 너구리",
+      "youtube": "약 4.68만명",
+      "chzzk": "28,787명",
+      "soop": null
+    },
+    {
+      "name": "담유이",
+      "youtube": "약 3.04만명",
+      "chzzk": "45,786명",
+      "soop": null
+    },
+    {
+      "name": "시리안 레인",
+      "youtube": "약 2.22만명",
+      "chzzk": null,
+      "soop": "약 4.4만명"
+    },
+    {
+      "name": "너구리",
+      "youtube": "약 4.15만명",
+      "chzzk": "20,943명",
+      "soop": null
+    },
+    {
+      "name": "베릴",
+      "youtube": null,
+      "chzzk": "41,449명",
+      "soop": null
+    },
+    {
+      "name": "양도끼",
+      "youtube": "약 4.09만명",
+      "chzzk": "4,929명",
+      "soop": null
+    },
+    {
+      "name": "유세라",
+      "youtube": "약 3.91만명",
+      "chzzk": "40,428명",
+      "soop": null
+    },
+    {
+      "name": "심술",
+      "youtube": "약 3.92만명",
+      "chzzk": "2,584명",
+      "soop": null
+    },
+    {
+      "name": "연초봄",
+      "youtube": "약 3.14만명",
+      "chzzk": "29,801명",
+      "soop": null
+    },
+    {
+      "name": "쿠로",
+      "youtube": "약 2.85만명",
+      "chzzk": null,
+      "soop": null
+    },
+    {
+      "name": "후니",
+      "youtube": "약 2.77만명",
+      "chzzk": "3,683명",
+      "soop": null
+    },
+    {
+      "name": "미도미도 마요",
+      "youtube": "약 2.62만명",
+      "chzzk": "12,532명",
+      "soop": null
+    },
+    {
+      "name": "로션욤",
+      "youtube": "약 2.04만명",
+      "chzzk": "17,834명",
+      "soop": null
+    },
+    {
+      "name": "리우리",
+      "youtube": "약 6,550명",
+      "chzzk": "15,548명",
+      "soop": null
+    },
+    {
+      "name": "고스트",
+      "youtube": "약 1.41만명",
+      "chzzk": null,
+      "soop": null
+    },
+    {
+      "name": "다비",
+      "youtube": "약 5,740명",
+      "chzzk": "13,193명",
+      "soop": null
+    },
+    {
+      "name": "미라지",
+      "youtube": "약 6,090명",
+      "chzzk": "13,164명",
+      "soop": null
+    },
+    {
+      "name": "야튀",
+      "youtube": "약 7,040명",
+      "chzzk": "11,167명",
+      "soop": null
+    },
+    {
+      "name": "B1A4 공찬",
+      "youtube": "약 1.07만명",
+      "chzzk": null,
+      "soop": null
+    },
+    {
+      "name": "우말",
+      "youtube": "약 1,710명",
+      "chzzk": "10,119명",
+      "soop": null
+    },
+    {
+      "name": "보나",
+      "youtube": "약 9,470명",
+      "chzzk": null,
+      "soop": null
+    },
+    {
+      "name": "김하루",
+      "youtube": "약 8,000명",
+      "chzzk": "8,279명",
+      "soop": null
+    },
+    {
+      "name": "얀즈",
+      "youtube": "약 7,100명",
+      "chzzk": "6,358명",
+      "soop": null
+    },
+    {
+      "name": "프로젝트 아이",
+      "youtube": "약 5,450명",
+      "chzzk": null,
+      "soop": null
+    },
+    {
+      "name": "로컨",
+      "youtube": "약 4,840명",
+      "chzzk": null,
+      "soop": null
+    },
+    {
+      "name": "이주",
+      "youtube": "약 1,670명",
+      "chzzk": "3,979명",
+      "soop": null
+    }
+  ],
+  "partners": [
+    {
+      "name": "사운드캣",
+      "alt": "사운드캣 로고",
+      "white": false,
+      "image": "img/partner-1.png"
+    },
+    {
+      "name": "오버시스템",
+      "alt": "오버시스템 로고",
+      "white": false,
+      "image": "img/partner-2.svg"
+    },
+    {
+      "name": "엘가토",
+      "alt": "엘가토 로고",
+      "white": false,
+      "image": "img/partner-3.svg"
+    },
+    {
+      "name": "에버미디어",
+      "alt": "에버미디어 로고",
+      "white": true,
+      "image": "img/partner-4.webp"
+    }
+  ],
+  "portrait": "img/profile.png",
+  "videos": [
+    {
+      "id": "DDQoCdhjHsQ",
+      "label": "제 1회 버츄얼 페스티벌 쌍창콘서트 · 쌍튜브 공식"
+    },
+    {
+      "id": "AffeiWX2aUI",
+      "label": "무엇이든 도전하는 남자, 유튜버 고재영 초대석 with 미스터비스트 성우 · 남도형의 블루클럽 공식"
+    }
+  ],
+  "clips": [
+    {
+      "url": "https://chzzk.naver.com/clips/WLTifmeBJw",
+      "creator": "오화요",
+      "source": "치지직 클립",
+      "title": "에일리 · 노래가 늘었어",
+      "date": "2026-07-29",
+      "duration": "1:52",
+      "image": "img/clip-1.jpg"
+    },
+    {
+      "url": "https://chzzk.naver.com/clips/IDLtLzU22V",
+      "creator": "디디디용",
+      "source": "치지직 클립",
+      "title": "금지된 사랑 · 하이라이트",
+      "date": "2026-05-21",
+      "duration": "0:44",
+      "image": "img/clip-2.jpg"
+    },
+    {
+      "url": "https://chzzk.naver.com/clips/Vd1280ZRM9",
+      "creator": "아야",
+      "source": "치지직 클립",
+      "title": "경서 · 나의 X에게",
+      "date": "2026-09-06",
+      "duration": "1:01",
+      "image": "img/clip-3.jpg"
+    }
+  ],
+  "servers": [
+    "악어의 놀이터",
+    "띵타이쿤",
+    "악어의 놀이터 2",
+    "콩밥특별시",
+    "봉누도2"
+  ],
+  "faqs": [
+    {
+      "q": "방송을 처음 시작해도 신청할 수 있나요?",
+      "a": "가능합니다. 준비된 PC와 장비, 사용할 방송 플랫폼을 알려 주시면 필요한 작업 범위를 확인하고 사용 방법도 함께 안내합니다."
+    },
+    {
+      "q": "어떤 장비든 원격으로 세팅할 수 있나요?",
+      "a": "장비 모델과 드라이버, 프로그램 지원 여부를 먼저 확인합니다. 원격으로 진행하기 어려운 부분이 있으면 상담에서 안내합니다."
+    }
+  ]
+}

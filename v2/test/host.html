@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>아트머그 흉내 · 악몽 상세</title>
+<!-- A stand-in for the Artmug detail page: its global CSS, the 1180px column, the 3,000px cut,
+     "내용 더 보기", the 문의 button and the review table. Open with ?variant=a|b|c -->
+<style>
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, form, fieldset, p, button { margin: 0; padding: 0; }
+div, ul, ol, dl, li, dt, dd { list-style: none; vertical-align: middle; line-height: 1; }
+body, table, input, textarea, select { font-size: 15px; color: rgb(36, 36, 36); font-family: "맑은 고딕", "Malgun Gothic", 돋움, sans-serif; }
+h1 { display: none; }
+a:link, a:visited { color: rgb(36, 36, 36); text-decoration: none; }
+body { background: #fff; }
+#top { height: 56px; background: #ff6a1a; }
+#wrapBody { width: 1180px; margin: 0 auto; padding-top: 40px; }
+.gallery { display: flex; gap: 40px; }
+.gallery .imgs { width: 732px; }
+.gallery .imgs div { height: 300px; margin-bottom: 8px; background: #111; color: #fff; display: grid; place-items: center; font-size: 28px; }
+#rightInfo { width: 328px; border: 1px solid #ddd; padding: 16px; height: 420px; }
+.btn_qna, .btn_order { margin-top: 12px; padding: 14px; text-align: center; cursor: pointer; background: #333; color: #fff; }
+.btn_order { background: #ff6a1a; }
+#detailViews { margin-top: 80px; overflow: hidden; }
+.detailinfo.showstep1 { max-height: 3000px; overflow: hidden; }
+.btn_open { height: 124px; display: grid; place-items: center; }
+.btn_open_btn { border: 1px solid #333; padding: 14px 120px; cursor: pointer; }
+.btn_open_btn.hide { display: none; }
+.s_title { margin: 120px 0 60px; text-align: center; font-size: 22px; }
+table.rev { width: 100%; border-collapse: collapse; }
+table.rev td, table.rev th { border-bottom: 1px solid #eee; padding: 10px; font-size: 13px; }
+#lightbox { position: fixed; inset: 0; background: rgb(0 0 0 / .5); display: none; place-items: center; z-index: 2147483000; }
+#lightbox div { background: #fff; padding: 24px; width: 600px; }
+#lightbox textarea { width: 100%; height: 200px; }
+</style>
+</head>
+<body>
+<div id="top"></div>
+<div id="wrapBody">
+  <div class="gallery">
+    <div class="imgs"><div>대표 이미지 1</div><div>대표 이미지 2</div></div>
+    <div id="rightInfo">악몽 작가<p class="btn_qna" onclick="document.getElementById('lightbox').style.display='grid'">작가에게 문의 (답변 100%)</p><p class="btn_order">주문 / 결제하기</p></div>
+  </div>
+  <div id="detailViews">
+    <div class="detailinfo showstep1"><div class="showcontent">
+      <div id="akmong-studio" data-theme="light"><p>스크립트가 실행되지 않으면 이 자리에 지금의 iframe이 보입니다.</p></div>
+      <script>
+        const v = new URLSearchParams(location.search).get('variant');
+        if (v) document.getElementById('akmong-studio').dataset.variant = v;
+        document.write('<script src="../artmug.js"><\/script>');
+      </script>
+    </div></div>
+    <div class="btn_open"><ol class="btn_open_btn" onclick="document.querySelector('.detailinfo').classList.remove('showstep1');this.classList.add('hide')">내용 더 보기 ∨</ol></div>
+    <ul class="s_title">작가의 환불 정책</ul>
+    <p style="text-align:center">작업 시작 전: 100% 환불</p>
+    <ul class="s_title">이용 후기</ul>
+    <table class="rev"><tr><th>번호</th><th>평점</th><th>내용</th><th>작성자</th><th>작성일</th></tr>
+      <tr><td>25</td><td>★★★★★</td><td>늦은 시간이었는데 친절하게 끝까지 잘 맞춰주셨습니다.세팅 환경도 조금 특이한 환경이라 손이 갔는데 성실히 임해주셔서 감사했습니다.세팅도 마음에 듭니다. 고생 많으셨습니다!</td><td>*소</td><td>26-11-23</td></tr>
+      <tr><td>24</td><td>★★★★★</td><td>투컴 세팅으로 요청 드렸습니다처음엔 가볍게 가면 될 줄 알았는데 부담이 될거라 의심된 부분, 어떤 장비를 쓰면 좋은지 구체적으로 잘 알려주셨습니다!해주시는 말씀에서도 자신의 ...</td><td>*넴</td><td>26-11-22</td></tr>
+      <tr><td>23</td><td>★★★★★</td><td>친절하게 대해주시고 설명도 자세히 말씀해주셨어요 감사합니다!</td><td>*거</td><td>26-11-21</td></tr>
+      <tr><td>22</td><td>★★★★★</td><td>정말 세팅 이번에 바꾼게 총 6번째 바꾸는건데 매번 돈은 엄청 쓰구 마음에 드는 세팅이 안나와서 속상했는데정말 말도 안되게 원하는 세팅에 딱 맞는 세팅을 받아서 진짜 이번년도...</td><td>**이</td><td>26-11-19</td></tr>
+      <tr><td>18</td><td>★★★★★</td><td>일단 사용자가 원하는 사운드에 초점을 두고, 마이크 세팅을 맞추어가는 점이 인상적이었습니다! 보통은 추구하시는 사운드가 있냐 하고 단편적으로만 물어보시고, 그거에 맞추어 작...</td><td>***i</td><td>26-11-13</td></tr>
+    </table>
+    <div style="height:600px"></div>
+  </div>
+</div>
+<div id="lightbox" onclick="if(event.target===this)this.style.display='none'"><div><p>아트머그 문의 창 (흉내)</p><textarea placeholder="여기에 붙여 넣기"></textarea></div></div>
+</body>
+</html>

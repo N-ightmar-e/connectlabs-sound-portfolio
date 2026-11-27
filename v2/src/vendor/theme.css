@@ -1,0 +1,250 @@
+/* Text-first UI: theme variables.
+   The names are shadcn/ui's, so a shadcn project reads them as they are.
+   The values started from shadcn's "neutral" theme and were eased for long viewing (2026-11-26),
+   after coss ui and HeroUI: softer ink, an off-white page under white surfaces, darker secondary text.
+   shadcn project: paste the :root and .dark blocks over the ones in globals.css.
+   Plain HTML: link this file, then components.css. */
+
+:root {
+  --radius: 0.625rem;
+  /* The page is a step off white; cards, fields and popovers are white on it. */
+  --background: oklch(0.985 0 0);
+  --foreground: oklch(0.205 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.205 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.205 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.955 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.955 0 0);
+  /* 6.3:1 on the page, 5.7:1 on --muted. shadcn's 0.556 gave 4.7:1 and 4.35:1. */
+  --muted-foreground: oklch(0.48 0 0);
+  --accent: oklch(0.955 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.91 0 0);
+  --input: oklch(0.88 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.97 0 0);
+  --sidebar-foreground: oklch(0.205 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.955 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.91 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+  /* Not black and not white: a dark grey page, surfaces one small step lighter, ink below full white. */
+  --background: oklch(0.17 0 0);
+  --foreground: oklch(0.93 0 0);
+  --card: oklch(0.2 0 0);
+  --card-foreground: oklch(0.93 0 0);
+  --popover: oklch(0.22 0 0);
+  --popover-foreground: oklch(0.93 0 0);
+  --primary: oklch(0.93 0 0);
+  --primary-foreground: oklch(0.2 0 0);
+  --secondary: oklch(0.25 0 0);
+  --secondary-foreground: oklch(0.93 0 0);
+  --muted: oklch(0.25 0 0);
+  --muted-foreground: oklch(0.72 0 0);
+  --accent: oklch(0.25 0 0);
+  --accent-foreground: oklch(0.93 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.2 0 0);
+  --sidebar-foreground: oklch(0.93 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.25 0 0);
+  --sidebar-accent-foreground: oklch(0.93 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+  --shadow-overlay: 0 8px 24px rgb(0 0 0 / 0.4), 0 2px 6px rgb(0 0 0 / 0.3);
+}
+
+/* Plain HTML pages with no theme switch follow the system setting.
+   Same values as the block above; a page that sets .light or data-theme="light" stays light. */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light):not([data-theme="light"]) {
+    color-scheme: dark;
+    --background: oklch(0.17 0 0);
+    --foreground: oklch(0.93 0 0);
+    --card: oklch(0.2 0 0);
+    --card-foreground: oklch(0.93 0 0);
+    --popover: oklch(0.22 0 0);
+    --popover-foreground: oklch(0.93 0 0);
+    --primary: oklch(0.93 0 0);
+    --primary-foreground: oklch(0.2 0 0);
+    --secondary: oklch(0.25 0 0);
+    --secondary-foreground: oklch(0.93 0 0);
+    --muted: oklch(0.25 0 0);
+    --muted-foreground: oklch(0.72 0 0);
+    --accent: oklch(0.25 0 0);
+    --accent-foreground: oklch(0.93 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 16%);
+    --ring: oklch(0.556 0 0);
+    --shadow-overlay: 0 8px 24px rgb(0 0 0 / 0.4), 0 2px 6px rgb(0 0 0 / 0.3);
+  }
+}
+
+/* Additions on top of shadcn: font, radius steps, spacing, response tints, shadow, motion. */
+:root {
+  color-scheme: light;
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* shadcn derives these from --radius: 6, 8, 10, 14px */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-full: 9999px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+
+  /* What a pointer over something and a chosen thing look like. Tints of the ink, so they
+     read on any surface in either theme, and the two can be told apart (after HeroUI's 4-8%). */
+  --hover: color-mix(in oklab, var(--foreground) 6%, transparent);
+  --selected: color-mix(in oklab, var(--foreground) 10%, transparent);
+
+  /* Only for things that float over content: menus, popovers, dialogs. */
+  --shadow-overlay: 0 8px 24px rgb(0 0 0 / 0.08), 0 2px 6px rgb(0 0 0 / 0.04);
+
+  /* ---------- Motion ----------
+     The manner comes from osu!lazer: one easing curve, hover that answers at once and lets go
+     slowly, a press that sinks and springs back, a flash on click, things that glide to new values.
+     The amounts come from Animate UI, Motion and HeroUI (read 2026-11-26): press to 0.97,
+     springs that settle in under half a second with a few percent of overshoot. */
+
+  /* One knob for speed, after Animate UI's tempo: 0.8 is brisker, 1.25 is calmer. */
+  --tempo: 1;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1); /* OutQuint: 83% of the way in the first 30% of the time */
+  /* Fallbacks for browsers without linear(); both are replaced below. */
+  --ease-spring: cubic-bezier(0.34, 1.2, 0.64, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.3, 0.64, 1);
+
+  --dur-instant: calc(80ms * var(--tempo));   /* hover in */
+  --dur-out: calc(240ms * var(--tempo));      /* hover out */
+  --dur-fast: calc(180ms * var(--tempo));     /* toggle colors, exits */
+  --dur-base: calc(240ms * var(--tempo));     /* menus opening, a list changing */
+  --dur-slow: calc(360ms * var(--tempo));     /* tab strip, progress, toasts */
+  --dur-press: calc(240ms * var(--tempo));    /* sinking while held */
+  --dur-release: calc(420ms * var(--tempo));  /* a pressed button springing back */
+  --dur-spring: calc(500ms * var(--tempo));   /* toggles and dialogs landing */
+  --dur-flash: calc(400ms * var(--tempo));    /* the click flash fading */
+  --dur-roll: calc(450ms * var(--tempo));     /* a number rolling to a new value */
+
+  --press-scale: 0.97;        /* buttons (HeroUI, Animate UI) */
+  --press-scale-small: 0.9;   /* checkbox, radio: small things need more to show */
+  --press-scale-wide: 0.99;   /* choice rows: wide things need less */
+  --flash: 0.12;              /* opacity of the click flash */
+  --pop-from: 0.96;           /* the scale a menu or dialog starts from */
+  --pop-shift: 4px;           /* how far a menu or changed content travels */
+  --slide: 24px;              /* how far a toast travels */
+  --thumb-stretch: 20px;      /* a switch thumb's width while pressed (16px at rest) */
+}
+
+/* Springs as linear() curves, sampled from the damped-spring equation.
+   --ease-bounce: stiffness 550, damping 30 (Animate UI's press spring): 7% over at 174ms, settled by 414ms.
+   --ease-spring: stiffness 300, damping 25 (Animate UI's thumb; Motion's default is 305/24.4): 4% over, settled by 497ms. */
+@supports (transition-timing-function: linear(0, 1)) {
+  :root {
+    --ease-bounce: linear(0, 0.08, 0.261, 0.472, 0.669, 0.83, 0.946, 1.02, 1.059, 1.073, 1.07, 1.058, 1.043, 1.028, 1.015, 1.006, 1, 0.996, 0.995, 0.995, 0.996, 0.997, 1);
+    --ease-spring: linear(0, 0.063, 0.207, 0.381, 0.551, 0.7, 0.819, 0.908, 0.969, 1.007, 1.028, 1.037, 1.037, 1.033, 1.027, 1.021, 1.015, 1.009, 1.005, 1.002, 1.001, 0.999, 1);
+  }
+}
+
+/* The livelier feel: osu!lazer's own amounts. Opt in with <html data-feel="lively">.
+   A press sinks to 0.92 and swings back on osu!framework's OutElastic (37% over, 13% back). */
+:root[data-feel="lively"] {
+  --dur-out: calc(500ms * var(--tempo));
+  --dur-fast: calc(200ms * var(--tempo));
+  --dur-base: calc(300ms * var(--tempo));
+  --dur-slow: calc(500ms * var(--tempo));
+  --dur-press: calc(600ms * var(--tempo));
+  --dur-release: calc(900ms * var(--tempo));
+  --dur-spring: calc(600ms * var(--tempo));
+  --dur-flash: calc(800ms * var(--tempo));
+  --dur-roll: calc(700ms * var(--tempo));
+  --press-scale: 0.92;
+  --press-scale-small: 0.8;
+  --press-scale-wide: 0.985;
+  --flash: 0.28;
+  --pop-from: 0.9;
+  --pop-shift: 8px;
+  --slide: 40px;
+  --thumb-stretch: 24px;
+}
+@supports (transition-timing-function: linear(0, 1)) {
+  :root[data-feel="lively"] {
+    --ease-bounce: linear(0, 0.39, 0.89, 1.25, 1.37, 1.3, 1.12, 0.97, 0.88, 0.87, 0.92, 0.99, 1.03, 1.05, 1.04, 1.02, 1, 0.98, 0.98, 0.99, 1, 1, 1.01, 1, 1, 1, 1, 1, 1, 1, 1);
+    --ease-spring: linear(0, 0.321, 0.639, 0.891, 1.055, 1.135, 1.153, 1.132, 1.093, 1.053, 1.019, 0.996, 0.984, 0.981, 0.983, 0.987, 0.992, 0.997, 1, 1.002, 1.002, 1.002, 1.002, 1.001, 1);
+  }
+}
+
+/* Base */
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  /* Korean breaks between words, never inside one. */
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* Set on <html> for one frame while the theme changes, so colors switch at once. */
+.tf-theme-switching,
+.tf-theme-switching * { transition: none !important; }
+
+/* The hidden attribute wins over any display rule a class sets. */
+[hidden] { display: none !important; }
+
+/* Type scale. Two weights only: 400 and 500. */
+.tf-display    { font-size: 48px; line-height: 1.08; font-weight: 500; letter-spacing: -0.035em; text-wrap: balance; }
+.tf-title      { font-size: 36px; line-height: 1.12; font-weight: 500; letter-spacing: -0.03em;  text-wrap: balance; }
+.tf-heading    { font-size: 24px; line-height: 1.25; font-weight: 500; letter-spacing: -0.02em;  text-wrap: balance; }
+.tf-subheading { font-size: 16px; line-height: 1.4;  font-weight: 500; letter-spacing: -0.01em; }
+.tf-lead       { font-size: 16px; line-height: 1.65; font-weight: 400; color: var(--muted-foreground); text-wrap: pretty; }
+.tf-body       { font-size: 14px; line-height: 1.6;  font-weight: 400; }
+.tf-caption    { font-size: 13px; line-height: 1.5;  font-weight: 400; color: var(--muted-foreground); }
+.tf-label      { font-size: 12px; line-height: 1.4;  font-weight: 500; }
+.tf-code       { font-family: var(--font-mono); font-size: 13px; line-height: 1.6; }
+
+@media (max-width: 640px) {
+  .tf-display { font-size: 36px; }
+  .tf-title   { font-size: 28px; }
+  .tf-heading { font-size: 20px; }
+}

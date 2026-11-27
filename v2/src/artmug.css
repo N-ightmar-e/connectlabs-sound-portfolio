@@ -1,0 +1,120 @@
+/* Artmug's own parts on this product page, in the same quiet style as the studio.
+   Only on a page that carries #akmong-studio in light theme. Only looks change: nothing is hidden,
+   moved or re-wired, so if Artmug changes its markup the page falls back to Artmug's own look.
+   Selectors come from the live page (2026-11-27). Values are theme.css's light ones under --ak-* names. */
+
+html:has(#akmong-studio[data-theme="light"]) {
+  --ak-bg: oklch(0.985 0 0);
+  --ak-card: oklch(1 0 0);
+  --ak-fg: oklch(0.205 0 0);
+  --ak-muted: oklch(0.48 0 0);
+  --ak-border: oklch(0.91 0 0);
+  --ak-input: oklch(0.88 0 0);
+  --ak-hover: color-mix(in oklab, oklch(0.205 0 0) 6%, transparent);
+  --ak-shadow: 0 8px 24px rgb(0 0 0 / 0.08), 0 2px 6px rgb(0 0 0 / 0.04);
+  --ak-font: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --ak-ease: cubic-bezier(0.23, 1, 0.32, 1);
+
+  & body { background: var(--ak-bg); }
+
+  /* Title row above the gallery */
+  & #goods_head { font-family: var(--ak-font); }
+  & #goods_head .making, & #goods_head .goods_num { color: var(--ak-muted); font-size: 13px; }
+  & #goods_head .goods_title, & #goods_head .goods_title a { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; color: var(--ak-fg); }
+
+  /* Right column: artist card, details, price options */
+  & #rightInfo { font-family: var(--ak-font); }
+  & #profile, & #goodsInfo, & #goodsOrder {
+    box-sizing: border-box; background: var(--ak-card); border: 1px solid var(--ak-border); border-radius: 10px; overflow: hidden;
+  }
+  & #goodsInfo, & #goodsOrder { margin-top: 12px; }
+  & #profile .nic_name a { font-size: 16px; font-weight: 500; color: var(--ak-fg); }
+  & #profile .brief { color: var(--ak-muted); font-size: 13px; line-height: 1.6; }
+  & #receive_Y, & #profile .bill_mark {
+    display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border: 1px solid var(--ak-border);
+    border-radius: 9999px; background: transparent; color: var(--ak-fg); font-size: 12px; font-weight: 500; line-height: 1;
+  }
+  & #profile .contact .orange, & #payment .guide .orange { color: var(--ak-fg); }
+  & #goodsInfo .head, & #goodsOrder .head {
+    height: auto; padding: 16px; background: transparent; color: var(--ak-fg); border-bottom: 1px solid var(--ak-border);
+    font-size: 16px; font-weight: 500; line-height: 1.4; text-align: left; letter-spacing: -0.01em;
+  }
+  & #goodsInfo .left_right_dl { font-size: 14px; }
+  & #goodsInfo .left_right_dl dl:first-child { color: var(--ak-muted); }
+  & .goodsTitle_op { font-size: 14px; font-weight: 500; color: var(--ak-fg); }
+  & .opBox { box-sizing: border-box; border: 1px solid var(--ak-input) !important; border-radius: 8px; background: var(--ak-card); }
+  & .opBox > div:last-child {
+    border: 1px solid var(--ak-border) !important; border-radius: 10px; background: var(--ak-card) !important;
+    box-shadow: var(--ak-shadow); padding: 4px; margin-top: 4px !important;
+  }
+  & .opBox > div:last-child > div { border-radius: 8px; transition: background-color 240ms var(--ak-ease); }
+  & .opBox > div:last-child > div:hover { background: var(--ak-hover); transition-duration: 80ms; }
+  & #goodsOrder input[type="text"] { border: 1px solid var(--ak-input); border-radius: 8px; }
+  & #payment .totalTitle { font-size: 14px; font-weight: 500; color: var(--ak-fg); }
+  & #payment .totalPrice, & #payment .totalPrice * { color: var(--ak-fg) !important; font-weight: 500; font-variant-numeric: tabular-nums; }
+
+  /* The two actions: ordering is the one black button, asking is outlined. */
+  & .btn_qna, & .btn_order, & #cont_qna .sBtn1 {
+    box-sizing: border-box; display: flex; align-items: center; justify-content: center; height: 48px; line-height: 1;
+    border-radius: 8px; font-family: var(--ak-font); font-size: 14px; font-weight: 500; cursor: pointer;
+    transition: background-color 240ms var(--ak-ease), transform 420ms var(--ak-ease);
+  }
+  & .btn_qna, & #cont_qna .sBtn1 { background: var(--ak-card); color: var(--ak-fg); border: 1px solid var(--ak-input); }
+  & .btn_order { background: var(--ak-fg); color: var(--ak-card); border: 1px solid var(--ak-fg); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.14); }
+  & .btn_qna:active, & .btn_order:active, & #cont_qna .sBtn1:active { transform: scale(0.97); transition-duration: 80ms, 240ms; }
+  @media (hover: hover) and (pointer: fine) {
+    & .btn_qna:hover, & #cont_qna .sBtn1:hover { background: color-mix(in oklab, var(--ak-fg) 5%, var(--ak-card)); transition-duration: 80ms, 420ms; }
+    & .btn_order:hover { background: color-mix(in oklab, var(--ak-fg) 88%, var(--ak-bg)); transition-duration: 80ms, 420ms; }
+  }
+
+  /* "내용 더 보기" */
+  & .btn_open .btn_open_btn {
+    border: 1px solid var(--ak-input); border-radius: 8px; background: var(--ak-card); color: var(--ak-fg);
+    font-family: var(--ak-font); font-size: 14px; font-weight: 500; transition: background-color 240ms var(--ak-ease);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    & .btn_open .btn_open_btn:hover { background: color-mix(in oklab, var(--ak-fg) 5%, var(--ak-card)); transition-duration: 80ms; }
+  }
+
+  /* Below the description: refund policy, tags, notes */
+  & #detailViews { font-family: var(--ak-font); color: var(--ak-muted); font-size: 14px; line-height: 1.7; }
+  & #detailViews .s_title, & #cont_qna .s_title, & #cont_after .s_title {
+    font-family: var(--ak-font); font-size: 24px; font-weight: 500; letter-spacing: -0.02em; color: var(--ak-fg);
+  }
+
+  /* 문의 및 답변, 이용 후기: one card each, hairline rows, quiet header */
+  & #cont_qna, & #cont_after {
+    box-sizing: border-box; margin-top: 48px; padding: 24px; background: var(--ak-card);
+    border: 1px solid var(--ak-border); border-radius: 10px; font-family: var(--ak-font);
+  }
+  & #cont_after .blank[style*="95px"] { height: 0 !important; }
+  & #cont_qna .orange, & #cont_qna .noticeIcon_o { color: var(--ak-muted); }
+  & #cont_qna .answer_per {
+    width: fit-content; display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border: 1px solid var(--ak-border);
+    border-radius: 9999px; font-size: 12px; font-weight: 500; color: var(--ak-fg);
+  }
+  & #cont_qna .listTh, & #cont_after .listTh {
+    height: 40px; background: transparent; color: var(--ak-muted); border-bottom: 1px solid var(--ak-border);
+    font-size: 13px; font-weight: 500;
+  }
+  & #list_qna td, & #list_after td { font-size: 14px; color: var(--ak-fg); }
+  /* Artmug draws its own 1px separator rows; recolor them to the hairline. */
+  & #list_after td[colspan][style*="background"] { background-color: var(--ak-border) !important; }
+  & #list_qna .line_bottom { height: 1px; border: 0 !important; background: var(--ak-border); }
+  & #list_qna .date, & #list_after .date, & #list_after td:first-child { color: var(--ak-muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+  & #list_qna .name { color: var(--ak-fg); }
+  & #list_qna .title a { color: var(--ak-muted); }
+
+  /* Paging */
+  & #paging2 .num, & #paging3 .num {
+    display: inline-flex; align-items: center; justify-content: center; min-width: 32px; height: 32px; padding: 0 8px;
+    border-radius: 8px; border: 1px solid transparent !important; font-family: var(--ak-font); font-size: 13px; font-variant-numeric: tabular-nums;
+    background: transparent; color: var(--ak-muted);
+  }
+  & #paging2 .num.selected, & #paging3 .num.selected { background: var(--ak-fg); color: var(--ak-card); }
+  & #paging2 .num.defaultOver, & #paging3 .num.defaultOver { background: var(--ak-hover); color: var(--ak-fg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(#akmong-studio[data-theme="light"]) :is(.btn_qna, .btn_order, #cont_qna .sBtn1):active { transform: none; }
+}

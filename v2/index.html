@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>악몽 · 방송 음향 세팅</title>
+<!-- The same studio on its own page: preview, and the fallback if Artmug ever drops scripts. -->
+<style>body{margin:0;padding:0 16px}#akmong-studio{max-width:1180px;margin:0 auto}</style>
+</head>
+<body>
+<div id="akmong-studio"></div>
+<script>
+  const q = new URLSearchParams(location.search);
+  const h = document.getElementById('akmong-studio');
+  if (q.get('variant')) h.dataset.variant = q.get('variant');
+  if (q.get('theme')) h.dataset.theme = q.get('theme');
+</script>
+<script src="artmug.js"></script>
+</body>
+</html>
